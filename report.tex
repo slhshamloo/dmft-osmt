@@ -1,4 +1,4 @@
-\documentclass[titlepage, 12pt, a4paper]{article}
+\documentclass[titlepage, 11pt, a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{float}
@@ -10,10 +10,32 @@
 
 %Instructions : 5 pages, maximum 8 including figures
 
+\newcommand{\cdag}[1]{\hat{c}_{#1}^{\dagger}}
+\renewcommand{\c}[1]{\hat{c}_{#1}}
+\newcommand{\n}[1]{\hat{n}_{#1}}
+
 \begin{document}
 
 \section{Introduction}
-Test \cite{Liebsch2003}
+
+Dynamical Mean-Field theory (DMFT) has proven to be a fantastic tool to study the Hubbard model and Mott-Hubbard transitions. 
+Still, the nature of Mott-Hubbard transitions is complex as we get away from the most simple models. Notably, in the years 2003 to 2005, a controversy was sparked regarding the existence of Orbital-Selective Mott Transitions (OSMTs). 
+Indeed, in many transition metal oxides, multiple bands typically cross the Fermi surface, notably the $t_{2g}$ or $e_g$ orbitals, and different bandwidths for different bands might give rise to multiple transition for each bands. 
+This is the case for the cuprate ${\mathrm{Ca}}_{2-x}{\mathrm{Sr}}_x{\mathrm{RuO}}_4$ which undergoes a Mott transition as $x$ is increased from 0 \cite{Nakatsuji2000}.
+
+The model considered in this paper will be the case of two bands, one narrow ($W = 2 eV$)  and one wide band ($W = 4 eV$). The Hamiltonian used will be the Hubbard hamiltonian with interband coupling accounting for Hund's exchange :
+
+\begin{align*}
+H = &- \sum_{\langle i,j \rangle m \sigma} \cdag{im\sigma} \c{jm\sigma} \\
+&+ U \sum_{i m \sigma} \n{im\uparrow} \n{im\downarrow} + \sum_{i \sigma \sigma'} \left( U' - \delta_{\sigma \sigma'} J_z \right) \n{i1\sigma} \n{i2\sigma'} \\
+&+ \frac{J_{\perp}}{2} \sum_{i m \sigma} \cdag{im\sigma} \left( \cdag{i \bar{m} \bar{\sigma}} \c{im\bar{\sigma}} + \cdag{im\bar{\sigma}} \c{i \bar{m} \bar{\sigma}} \right) \c{i \bar{m} \sigma}
+\end{align*}
+
+This model takes into account single-band Coulomb repulsion with the term in $U$, interband repulsion with $U' = U - 2J_z$ and Hund's exchange may be kept asymmetric ($J_z$ model) or simplified with $J_z = J_{perp} = J$ if the system is invariant under spin rotation ($J$ model).
+
+Initial results from Liebsch refuted the existence of OSMT for the $J_z$ model using a DMFT method with Quantum Monte-Carlo (QMC) solver at finite temperature \cite{Liebsch2003} \cite{Liebsch2004}. 
+However, multiple papers later contradicted Liebsch's results and found an OSMT, first Koga et al. using DMFT with exact diagonalisation (ED) at zero temperature and the full $J$ model \cite{Koga2004}, then Knecht et al. using DMFT with an improved QMC solver attempting to get rid of the sign problem at low temperature \cite{Knecht2005}, using the same $J_z$ model asq Liebsch.
+Finally Arita and Held also found an OSMT using projective QMC (PQMC) to tackle the $J$ model at zero temperature \cite{Arita2005}.
 
 \section{Methods}
 
