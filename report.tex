@@ -39,11 +39,16 @@ Finally Arita and Held also found an OSMT using projective QMC (PQMC) to tackle 
 
 \section{Methods}
 
+Our goal in this paper is to use DMFT with a QMC solver to clarify the controversy and ensure the two-band Mott transition predictions is well understood and well described with current methods. 
+To that end, we choose to study the full $J$ model, which supposedly encompasses the full effects of correlation, and is also more interesting as it has only been studied at 0 temperature, contrary to the $Jz$ model. 
+The parameters are chosen in accordance with previous papers on the matter, with the value of $U$ variable and the ratios $J = U/4$ and $U' = U - 2J = U/2$ fixed ; additionally the two bands are set with bandwidths $W_1 = 2 eV$ and $W_2 = 4 eV$ in an elliptical density of states given by $\rho_i (\epsilon) = \frac{4}{\pi W_i} \sqrt{1 - 4 \epsilon^2 / W_i^2}$, and taken at half filling.
+Finally temperature is set to $\beta = \frac{1}{40} eV$, about room temperature.
+
+To characterize the Mott transition, the parameter of choice is the quasiparticle weight, obtained from the self-energy :
+\[ Z_i = \frac{1}{1 - \frac{\partial}{\partial \omega} \Re (\Sigma_i) \biggr\rvert_{\omega = 0}}\]
+
 %TODO
 %explain :
-% values of parameters (J = U/4)
-% choice of elliptical DOS
-% choice of temperature
 % observables used to characterize OSMT (quasiparticle weight)
 % observables used to check convergence (spectral function)
 % parameters of DMFT and convergence tests
