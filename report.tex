@@ -47,12 +47,17 @@ To that end, we choose to study the full $J$ model, which supposedly encompasses
 In the Hamiltonian, $t_m$ is set to $1$ to set the energy scale. The parameters are chosen in accordance with previous papers on the matter, with the value of $U$ variable and the ratios $J = U/4$ and $U' = U - 2J = U/2$ fixed ; additionally the two bands are set with bandwidths $W_1 = 2 eV$ and $W_2 = 4 eV$ in an elliptical density of states given by $\rho_i (\epsilon) = \frac{4}{\pi W_i} \sqrt{1 - 4 \epsilon^2 / W_i^2}$, and taken at half filling.
 Finally temperature is set to $\beta = \frac{1}{40} eV$, about room temperature.
 
-
-In a Mott transition, the system undergoes a phase transition between a disordered phase for \(U<<t\), where the system is a conductor, and an ordered phase for \(U>>t\), where the Coulomb repulsion prevents electron hopping and the system becomes an insulator. The difference between the two phases is striking when looking at the spectral function. In the insulating phase, all the spectral weight is contained in two lobes separated by a (Mott) gap. The non zero quasi-particle weight at zero frequency is a signature of the conductive phase: there are available states right above the last filled one and therefore no gap between the occupied and unoccupied states. Hence, to characterize the Mott transition, the parameter of choice is the quasi-particle weight at the Fermi energy, obtained from the self-energy:
-\begin{equation}
-Z_i = \ddfrac{1}{1 - \eval{\pdv{\omega} \real(\Sigma_i)}_{\omega = 0}}
-\end{equation}
-As the quasiparticle weight goes to zero, so does the spectral weight at $\omega = 0$, indicating an insulating state.
+In a Mott transition, the system undergoes a phase transition between a disordered phase for \(U<<t\), where the system is a conductor, and an ordered phase for \(U>>t\), where the Coulomb repulsion prevents electron hopping and the system becomes an insulator. The difference between the two phases is striking when looking at the spectral function. In the insulating phase, all the spectral weight is contained in two lobes separated by a (Mott) gap (figure \ref{fig:mott_transition_example}). The non zero quasi-particle weight at zero frequency is a signature of the conductive phase: there are available states right above the last filled one and therefore no gap between the occupied and unoccupied states. Hence, to characterize the Mott transition, the parameter of choice is the quasi-particle weight at the Fermi energy, obtained from the self-energy:
+	\begin{equation}
+		Z_i = \ddfrac{1}{1 - \eval{\pdv{\omega} \real(\Sigma_i)}_{\omega = 0}}
+	\end{equation}
+	that describes the width of the quasi-particle peak at \(\omega=0\). As the quasi-particle weight goes to zero, so does the spectral weight at $\omega = 0$, indicating an insulating state.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.45\textwidth]{figures/spectral_before_vs_after.pdf}
+		\caption{Spectral function of the narrow band \(W=2\)eV in the conducting (blue) and the Mott insulator (red) phase, computed using DMFT. The spectral weight at \(\omega=0\) allows to characterize the phase of the system.}
+		\label{fig:mott_transition_example}
+	\end{figure}
 For approximating the quasiparticle weight, we used a discrete approximation from the first Matsubara frequency. As the first Matsubara frequency is given by $\omega_0 = \pi/\beta$, we have
 \begin{equation}
 Z_i \approx \ddfrac{1}{1 - \frac{\Im (\Sigma_i (i \omega_0))}{\omega_0}} = \ddfrac{1}{1 - \frac{\beta}{\pi} \Im (\Sigma_i (i \omega_0))}.
