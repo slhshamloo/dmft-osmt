@@ -41,7 +41,7 @@ Finally Arita and Held also found an OSMT using projective QMC (PQMC) to tackle 
 
 Our goal in this paper is to use DMFT with a QMC solver to clarify the controversy and ensure the two-band Mott transition predictions is well understood and well described with current methods. 
 To that end, we choose to study the full $J$ model, which supposedly encompasses the full effects of correlation, and is also more interesting as it has only been studied at 0 temperature, contrary to the $Jz$ model. 
-The parameters are chosen in accordance with previous papers on the matter, with the value of $U$ variable and the ratios $J = U/4$ and $U' = U - 2J = U/2$ fixed ; additionally the two bands are set with bandwidths $W_1 = 2 eV$ and $W_2 = 4 eV$ in an elliptical density of states given by $\rho_i (\epsilon) = \frac{4}{\pi W_i} \sqrt{1 - 4 \epsilon^2 / W_i^2}$, and taken at half filling.
+In the Hamiltonian, $t_m$ is set to 1 eV to set the energy scale. The parameters are chosen in accordance with previous papers on the matter, with the value of $U$ variable and the ratios $J = U/4$ and $U' = U - 2J = U/2$ fixed ; additionally the two bands are set with bandwidths $W_1 = 2 eV$ and $W_2 = 4 eV$ in an elliptical density of states given by $\rho_i (\epsilon) = \frac{4}{\pi W_i} \sqrt{1 - 4 \epsilon^2 / W_i^2}$, and taken at half filling.
 Finally temperature is set to $\beta = \frac{1}{40} eV$, about room temperature.
 
 To characterize the Mott transition, the parameter of choice is the quasiparticle weight, obtained from the self-energy :
@@ -54,6 +54,11 @@ To characterize the Mott transition, the parameter of choice is the quasiparticl
 % parameters of DMFT and convergence tests
 
 \section{Results}
+
+The quasiparticle weight is plotted on Fig. \ref{TODO}.
+The graph unambiguously shows an OSMT, with the narrow band becoming insulating at $U_{c1} \approx 2.1$ and the wide band at $U_{c2} \approx 3.1$. These results are to be compared with that of Koga's paper and Arita's paper, which show respectively $U_{c1} \approx 2.6, U_{c2} \approx 3.5$ and $U_{c1} \approx 2.6$
+
+Overall, our results are close to but lower than that cited above. This is in good agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. %Really ? Source ?
 
 %TODO
 %compare results for the transition values to the articles but especially Koga and Arita which have the same hamiltonian, although 0 T
