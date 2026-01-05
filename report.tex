@@ -34,7 +34,7 @@ H = &- \sum_{\langle i,j \rangle m \sigma} t_m \cdag{im\sigma} \c{jm\sigma} \\
 This model takes into account single-band Coulomb repulsion with the term in $U$, interband repulsion with $U' = U - 2J_z$ and Hund's exchange may be kept asymmetric ($J_z$ model) or simplified with $J_z = J_{perp} = J$ if the system is invariant under spin rotation ($J$ model). Sum indices denote sites ($i,j$), band ($m=1,2$) and spin ($\sigma = \uparrow, \downarrow$) with bars indicating the opposite state for the two states variables.
 
 Initial results from Liebsch refuted the existence of OSMT for the $J_z$ model using a DMFT method with Quantum Monte-Carlo (QMC) solver at finite temperature \cite{Liebsch2003} \cite{Liebsch2004}. 
-However, multiple papers later contradicted Liebsch's results and found an OSMT, first Koga et al. using DMFT with exact diagonalisation (ED) at zero temperature and the full $J$ model \cite{Koga2004}, then Knecht et al. using DMFT with an improved QMC solver attempting to get rid of the sign problem at low temperature \cite{Knecht2005}, using the same $J_z$ model asq Liebsch.
+However, multiple papers later contradicted Liebsch's results and found an OSMT, first Koga et al. using DMFT with exact diagonalisation (ED) at zero temperature and the full $J$ model \cite{Koga2004}, arguing that $J\perp$ was necessary for OSMT observation \cite{Koga2005}, then Knecht et al. using DMFT with an improved QMC solver attempting to get rid of the sign problem at low temperature \cite{Knecht2005}, using the same $J_z$ model as Liebsch, and refuted both previous articles.
 Finally Arita and Held also found an OSMT using projective QMC (PQMC) to tackle the $J$ model at zero temperature \cite{Arita2005}.
 
 \section{Methods}
@@ -92,7 +92,7 @@ The graph seems to be in agreement with Koga's results at $T = 0$ for the same m
 Author & T (eV)  & $U_{c1}$ (eV) & $U_{c2}$ (eV) & $U_{c1}$ (eV) & $U_{c2}$ (eV) \\
  \hline
  Liebsch, 2004 & 1/32 & 2.5 & 2.5 & & \\
- Koga et al., 2003 & 0 & & & 2.6 & 3.5 \\
+ Koga et al., 2005 & 0 & 2.3 & 2.3 & 2.6 & 3.5 \\
  Knecht et al., 2005 & 1/40, 1/32 & 2.1 & 2.6 & & \\
  Arita, Held, 2005 & 0 & & & 2.6 & \\
  Our results & 1/40 & & & 2.1 & 3.1 \\
