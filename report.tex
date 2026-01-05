@@ -5,6 +5,7 @@
 \usepackage{tcolorbox}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{physics}
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -13,6 +14,7 @@
 \newcommand{\cdag}[1]{\hat{c}_{#1}^{\dagger}}
 \renewcommand{\c}[1]{\hat{c}_{#1}}
 \newcommand{\n}[1]{\hat{n}_{#1}}
+\newcommand{\ddfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 
 \begin{document}
 
@@ -23,7 +25,7 @@ Still, the nature of Mott-Hubbard transitions is complex as we get away from the
 Indeed, in many transition metal oxides, multiple bands typically cross the Fermi surface, notably the $t_{2g}$ or $e_g$ orbitals, and different bandwidths for different bands might give rise to multiple transition for each bands. 
 This is the case for the cuprate ${\mathrm{Ca}}_{2-x}{\mathrm{Sr}}_x{\mathrm{RuO}}_4$ which undergoes a Mott transition as $x$ is increased from 0 \cite{Nakatsuji2000}.
 
-The model considered in this paper will be the case of two bands, one narrow ($W = 2 eV$)  and one wide band ($W = 4 eV$). The Hamiltonian used will be the Hubbard hamiltonian with interband coupling accounting for Hund's exchange :
+The model considered in this paper will be the case of two bands, one narrow ($W = 2$)  and one wide band ($W = 4$). The Hamiltonian used will be the Hubbard hamiltonian with interband coupling accounting for Hund's exchange :
 
 \begin{align*}
 H = &- \sum_{\langle i,j \rangle m \sigma} t_m \cdag{im\sigma} \c{jm\sigma} \\
@@ -36,32 +38,75 @@ This model takes into account single-band Coulomb repulsion with the term in $U$
 Initial results from Liebsch refuted the existence of OSMT for the $J_z$ model using a DMFT method with Quantum Monte-Carlo (QMC) solver at finite temperature \cite{Liebsch2003} \cite{Liebsch2004}. 
 However, multiple papers later contradicted Liebsch's results and found an OSMT, first Koga et al. using DMFT with exact diagonalisation (ED) at zero temperature and the full $J$ model \cite{Koga2004}, arguing that $J\perp$ was necessary for OSMT observation \cite{Koga2005}, then Knecht et al. using DMFT with an improved QMC solver attempting to get rid of the sign problem at low temperature \cite{Knecht2005}, using the same $J_z$ model as Liebsch, and refuted both previous articles.
 Finally Arita and Held also found an OSMT using projective QMC (PQMC) to tackle the $J$ model at zero temperature \cite{Arita2005}.
+Liebsch has also published an answer to Knecht et al., comparing directly results from both articles \cite{Liebsch2005}.
 
 \section{Methods}
 
 Our goal in this paper is to use DMFT with a QMC solver to clarify the controversy and ensure the two-band Mott transition predictions is well understood and well described with current methods. 
 To that end, we choose to study the full $J$ model, which supposedly encompasses the full effects of correlation, and is also more interesting as it has only been studied at 0 temperature, contrary to the $Jz$ model. 
-In the Hamiltonian, $t_m$ is set to 1 eV to set the energy scale. The parameters are chosen in accordance with previous papers on the matter, with the value of $U$ variable and the ratios $J = U/4$ and $U' = U - 2J = U/2$ fixed ; additionally the two bands are set with bandwidths $W_1 = 2 eV$ and $W_2 = 4 eV$ in an elliptical density of states given by $\rho_i (\epsilon) = \frac{4}{\pi W_i} \sqrt{1 - 4 \epsilon^2 / W_i^2}$, and taken at half filling.
+In the Hamiltonian, $t_m$ is set to $1$ to set the energy scale. The parameters are chosen in accordance with previous papers on the matter, with the value of $U$ variable and the ratios $J = U/4$ and $U' = U - 2J = U/2$ fixed ; additionally the two bands are set with bandwidths $W_1 = 2 eV$ and $W_2 = 4 eV$ in an elliptical density of states given by $\rho_i (\epsilon) = \frac{4}{\pi W_i} \sqrt{1 - 4 \epsilon^2 / W_i^2}$, and taken at half filling.
 Finally temperature is set to $\beta = \frac{1}{40} eV$, about room temperature.
 
 
-In a Mott transition, the system undergoes a phase transition between a disordered phase for \(U<<t\), where the system is a conductor, and an ordered phase for \(U>>t\), where the Coulomb repulsion prevents electron hopping and the system becomes an insulator. The difference between the two phases is striking when looking at the spectral function. In the insulating phase, all the spectral weight is contained in two lobes separated by a (Mott) gap. The non zero quasi-particle weight at zero frequency is a signature of the conductive phase: there are available states right above the last filled one and therefore no gap between the occupied and unoccupied states. Hence, to characterize the Mott transition, the parameter of choice is the quasi-particle weight at the Fermi energy, obtained from the self-energy :
-\[ Z_i = \frac{1}{1 - \frac{\partial}{\partial \omega} \mathrm{Re} (\Sigma_i) \biggr\rvert_{\omega = 0}}\]
+In a Mott transition, the system undergoes a phase transition between a disordered phase for \(U<<t\), where the system is a conductor, and an ordered phase for \(U>>t\), where the Coulomb repulsion prevents electron hopping and the system becomes an insulator. The difference between the two phases is striking when looking at the spectral function. In the insulating phase, all the spectral weight is contained in two lobes separated by a (Mott) gap. The non zero quasi-particle weight at zero frequency is a signature of the conductive phase: there are available states right above the last filled one and therefore no gap between the occupied and unoccupied states. Hence, to characterize the Mott transition, the parameter of choice is the quasi-particle weight at the Fermi energy, obtained from the self-energy:
+\begin{equation}
+Z_i = \ddfrac{1}{1 - \eval{\pdv{\omega} \real(\Sigma_i)}_{\omega = 0}}
+\end{equation}
+As the quasiparticle weight goes to zero, so does the spectral weight at $\omega = 0$, indicating an insulating state.
+For approximating the quasiparticle weight, we used a discrete approximation from the first Matsubara frequency. As the
+first Matsubara frequency is given by $\omega_0 = \pi/\beta$, we have
+\begin{equation}
+Z_i \approx \ddfrac{1}{1 - \frac{\Im (\Sigma_i (i \omega_0))}{\omega_0}} = \ddfrac{1}{1 - \frac{\beta}{\pi} \Im (\Sigma_i (i \omega_0))}.
+\end{equation}
+To get the spectral function from the calculation of the Green's function on the Matsubara (imaginary) axis, we used the maximum entropy method for analytic continuation.
 
-%TODO
-%explain :
-% observables used to check convergence (spectral function)
-% parameters of DMFT and convergence tests
-% add figure for spectral function
+The in-house DMFT + QMC code used for this project has two main parameters to ensure convergence: the number of DMFT iterations $n_{\text{DMFT}}$ and the time the QMC solver runs for each DMFT iteration, $t_{\text{QMC}}$.
+Other parameters worth mentioning are:
+\begin{itemize}
+\item The number of cores used for parallelisation, which is bound by the power of the computer used. We set this to 25 cores.
+\item \sloppy{The thermalization time in the QMC solver, which has to be around one fourth of the total QMC time to ensure the system is well equilibrated before measurements are taken.}
+\item The number of imaginary time slices in the QMC solver, which we set to 1024 slices to ensure a good resolution in imaginary time.
+\end{itemize}
+To choose appropriate values for $n_{\text{DMFT}}$ and $t_{\text{QMC}}$, we examined spectral function plots and monitored the change in quasiparticle weight as these parameters were increased.
+Playing around with these parameters, we found that increasing both parameters improved convergence at roughly the same rate. Our convergence showed that even very large values
+of $n_{\text{DMFT}}$ and $t_{\text{QMC}}$ improved the results (see figure \ref{fig:convergence}), so we set them to the maximum values our time constraints allowed: $t_{\text{QMC}} = 200\ \mathrm{s}$ and $n_{\text{DMFT}} = 200$.
+You can also see the improvement in the spectral function on figure \ref{fig:spectral_improvement}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/convergence}
+    \caption{Convergence of the quasiparticle weight as a function of DMFT iterations and QMC time. The number of DMFT iterations and the number of seconds for the QMC time are the same and are varied from 20 to 200.}
+    \label{fig:convergence}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/conv_low.pdf}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/conv_high}
+    \end{subfigure}
+    \caption{Spectral function for $U=2.5$ at low (left) and high (right) convergence parameters.}
+    \label{fig:spectral_improvement}
+\end{figure}
 
 \section{Results}
 
 The quasiparticle weight is plotted on Fig. \ref{TODO}.
 The graph unambiguously shows an OSMT, with the narrow band becoming insulating at $U_{c1} \approx 2.1$ and the wide band at $U_{c2} \approx 3.1$. These results are to be compared with that of Koga's paper \cite{Koga2004} and Arita's paper \cite{Arita2005}, which show respectively $U_{c1} \approx 2.6, U_{c2} \approx 3.5$ and $U_{c1} \approx 2.6$
 
-% Insert graph of Z
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{figures/z_full_J_all}
+    \caption{Quasiparticle weight as a function of $U$ for $J=0.25U$. The critical parameter $U_c$ at which the Mott transition occurs is defined as the point where $Z$ reaches 0.}
+    \label{fig:Z_full_J}
+\end{figure}
 
-Overall, our results are lower than those cited above. This might be agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. %Really ? Source ? Actually this might have nothing to do with temperature
+Overall, our results are lower than those cited above. This might be agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. \cite{Inaba2005} %Really ? Source ? Actually this might have nothing to do with temperature
 
 In contrast, Knecht et al. \cite{Knecht2004} find lower values in the $J_z$ model, with $U_{c1} \approx 2.1$ and $U_{c2} \approx 2.6$, contradicting Liebsch's finding of the absence of OSMT \cite{Liebsch2004}. %Add reference to 2nd Koga paper
 
@@ -74,8 +119,14 @@ To further ensure our results are correct, we plot the full spectral function fo
 % Compare those values with those of Arita et al. They plot spectral functions for U = 2.0, 2.2, 2.4, 2.6
 
 We further study the importance of the Hund coupling $J$ by running all the calculations again and setting $J = 0$ this time. The transition value is still not attained at $U = 5.5$, which is the maximum we could attain with our method before convergence issues.
-The graph seems to be in agreement with Koga's results at $T = 0$ for the same model, where there is a single transition at $U_c = 7.3$.
-% Insert graph of Z for J = 0
+The graph seems to be in agreement with Koga's results at $T = 0$ for the same model, where there is a single transition at $U_c = 7.3$, and $Z$ is at about $0.2$ for $U=5.5$.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{figures/z_no_J_all}
+    \caption{Quasiparticle weight as a function of $U$ for $J=0$.}
+    \label{fig:Z_no_J}
+\end{figure}
 
 \section{Conclusion}
 
@@ -98,9 +149,8 @@ Author & T (eV)  & $U_{c1}$ (eV) & $U_{c2}$ (eV) & $U_{c1}$ (eV) & $U_{c2}$ (eV)
  Our results & 1/40 & & & 2.1 & 3.1 \\
  \hline
 \end{tabular}
-
-
 \caption{Table comparing numerical values for Mott transitions. Liebsch's first paper is omitted as the parameters used were too different. Our results are}
+\label{table_compare}
 \end{table}
 
 \section*{Acknowledgements}
