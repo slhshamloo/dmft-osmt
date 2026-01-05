@@ -46,7 +46,7 @@ Finally temperature is set to $\beta = \frac{1}{40} eV$, about room temperature.
 
 
 In a Mott transition, the system undergoes a phase transition between a disordered phase for \(U<<t\), where the system is a conductor, and an ordered phase for \(U>>t\), where the Coulomb repulsion prevents electron hopping and the system becomes an insulator. The difference between the two phases is striking when looking at the spectral function. In the insulating phase, all the spectral weight is contained in two lobes separated by a (Mott) gap. The non zero quasi-particle weight at zero frequency is a signature of the conductive phase: there are available states right above the last filled one and therefore no gap between the occupied and unoccupied states. Hence, to characterize the Mott transition, the parameter of choice is the quasi-particle weight at the Fermi energy, obtained from the self-energy :
-\[ Z_i = \frac{1}{1 - \frac{\partial}{\partial \omega} \Re (\Sigma_i) \biggr\rvert_{\omega = 0}}\]
+\[ Z_i = \frac{1}{1 - \frac{\partial}{\partial \omega} \mathrm{Re} (\Sigma_i) \biggr\rvert_{\omega = 0}}\]
 
 %TODO
 %explain :
@@ -57,14 +57,25 @@ In a Mott transition, the system undergoes a phase transition between a disorder
 \section{Results}
 
 The quasiparticle weight is plotted on Fig. \ref{TODO}.
-The graph unambiguously shows an OSMT, with the narrow band becoming insulating at $U_{c1} \approx 2.1$ and the wide band at $U_{c2} \approx 3.1$. These results are to be compared with that of Koga's paper and Arita's paper, which show respectively $U_{c1} \approx 2.6, U_{c2} \approx 3.5$ and $U_{c1} \approx 2.6$
+The graph unambiguously shows an OSMT, with the narrow band becoming insulating at $U_{c1} \approx 2.1$ and the wide band at $U_{c2} \approx 3.1$. These results are to be compared with that of Koga's paper \cite{Koga2004} and Arita's paper \cite{Arita2005}, which show respectively $U_{c1} \approx 2.6, U_{c2} \approx 3.5$ and $U_{c1} \approx 2.6$
 
-Overall, our results are close to but lower than that cited above. This is in good agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. %Really ? Source ? Actually this might have nothing to do with temperature
+% Insert graph of Z
 
+Overall, our results are lower than those cited above. This might be agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. %Really ? Source ? Actually this might have nothing to do with temperature
 
+In contrast, Knecht et al. \cite{Knecht2004} find lower values in the $J_z$ model, with $U_{c1} \approx 2.1$ and $U_{c2} \approx 2.6$, contradicting Liebsch's finding of the absence of OSMT \cite{Liebsch2004}. %Add reference to 2nd Koga paper
 
-%TODO
-%compare results for the transition values to the articles but especially Koga and Arita which have the same hamiltonian, although 0 T
+% Insert discussion of the kink for Z2 at the first transition
+
+To further ensure our results are correct, we plot the full spectral function for a small set of values of $U$ and assess whether they display the characteristic behaviour of Mott transitions.
+
+% Insert plot of spectral functions for 2 bands and at least two values of U
+
+% Compare those values with those of Arita et al. They plot spectral functions for U = 2.0, 2.2, 2.4, 2.6
+
+We further study the importance of the Hund coupling $J$ by running all the calculations again and setting $J = 0$ this time. The transition value is still not attained at $U = 5.5$, which is the maximum we could attain with our method before convergence issues.
+The graph seems to be in agreement with Koga's results at $T = 0$ for the same model, where there is a single transition at $U_c = 7.3$.
+% Insert graph of Z for J = 0
 
 \section{Conclusion}
 
