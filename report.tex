@@ -98,40 +98,6 @@ You can also see the improvement in the spectral function on figure \ref{fig:spe
     \label{fig:spectral_improvement}
 \end{figure}
 
-The in-house DMFT + QMC code used for this project has two main parameters to ensure convergence: the number of DMFT iterations $n_{\text{DMFT}}$ and the time the QMC solver runs for each DMFT iteration, $t_{\text{QMC}}$.
-Other parameters worth mentioning are:
-\begin{itemize}
-\item The number of cores used for parallelisation, which is bound by the power of the computer used. We set this to 25 cores.
-\item \sloppy{The thermalization time in the QMC solver, which has to be around one fourth of the total QMC time to ensure the system is well equilibrated before measurements are taken.}
-\item The number of imaginary time slices in the QMC solver, which we set to 1024 slices to ensure a good resolution in imaginary time.
-\end{itemize}
-To choose appropriate values for $n_{\text{DMFT}}$ and $t_{\text{QMC}}$, we examined spectral function plots and monitored the change in quasiparticle weight as these parameters were increased.
-Playing around with these parameters, we found that increasing both parameters improved convergence at roughly the same rate. Our convergence showed that even very large values
-of $n_{\text{DMFT}}$ and $t_{\text{QMC}}$ improved the results (see figure \ref{fig:convergence}), so we set them to the maximum values our time constraints allowed: $t_{\text{QMC}} = 200\ \mathrm{s}$ and $n_{\text{DMFT}} = 200$.
-You can also see the improvement in the spectral function on figure \ref{fig:spectral_improvement}.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{figures/convergence}
-    \caption{Convergence of the quasiparticle weight as a function of DMFT iterations and QMC time. The number of DMFT iterations and the number of seconds for the QMC time are the same and are varied from 20 to 200.}
-    \label{fig:convergence}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/conv_low.pdf}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/conv_high}
-    \end{subfigure}
-    \caption{Spectral function for $U=2.5$ at low (left) and high (right) convergence parameters.}
-    \label{fig:spectral_improvement}
-\end{figure}
-
 \section{Results}
 
 The quasiparticle weight is plotted on Fig. \ref{fig:Z_full_J}.
@@ -139,7 +105,7 @@ The graph unambiguously shows an OSMT, with the narrow band becoming insulating 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{figures/z_full_J_all}
+    \includegraphics[width=0.5\textwidth]{figures/z_full_J_all}
     \caption{Quasiparticle weight as a function of $U$ for $J=0.25U$. The critical parameter $U_c$ at which the Mott transition occurs is defined as the point where $Z$ reaches 0.}
     \label{fig:Z_full_J}
 \end{figure}
@@ -159,16 +125,16 @@ The graph seems to be in agreement with Koga's results at $T = 0$ for the same m
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{figures/z_no_J_all}
+    \includegraphics[width=0.5\textwidth]{figures/z_no_J_all}
     \caption{Quasiparticle weight as a function of $U$ for $J=0$.}
     \label{fig:Z_no_J}
 \end{figure}
 
 \section{Conclusion}
 
-We considered a two-band Hubbard model with two different bandwidths \(W_1=2\)eV and \(W_2=4\)eV at room temperature \(T=1/40\)eV. The full \(J\) model was used, and the interaction strengths fixed at \(U'=U/2\) and \(J=U/4\). The self energy and the spectral function were calculated using DMFT with a QMC impurity solver. The behaviour of the spectral weight at the Fermi level shows an orbital selective Mott transition. The system undergoes two phase transitions, first at lower \(U\) for the narrow band, and at higher \(U\) for the wide one. Between the two critical values of \(U\), we obtain an intermediate phase, where the narrow band is insulating and the wide one is still conducting. These findings are in agreement with Knecht et al., who found it for the \(J_z\) model at finite temperature, with Koga et al., who found it for the full \(J\) model at 0 temperature and Arita and Held, who found it in both models at 0 temperature. In our work, we showed in addition that the transition remains orbital dependent at finite temperature for the full \(J\) model (table \ref{table_compare}). 
-%Analyze what's missing in Liebsch's papers
-%Compare relevance of results with other papers (is the finite T qualitatively different from 0 T, is it more realistic ; what does the J model add to the Jz model)
+We considered a two-band Hubbard model with two different bandwidths \(W_1=2\)eV and \(W_2=4\)eV at room temperature \(T=1/40\)eV. The full \(J\) model was used, and the interaction strengths fixed at \(U'=U/2\) and \(J=U/4\). The self energy and the spectral function were calculated using DMFT with a QMC impurity solver. The behaviour of the spectral weight at the Fermi level shows an orbital selective Mott transition. The system undergoes two phase transitions, first at lower \(U\) for the narrow band, and at higher \(U\) for the wide one. Between the two critical values of \(U\), we obtain an intermediate phase, where the narrow band is insulating and the wide one is still conducting, although with a very small quasiparticle weight. Another surprising phenomenon was the change of slope of the quasiparticle weight as a function of \(U\) at the transition of the narrow band. This behaviour was observed by Liebsch in the anisotropic \(J_z\) model only and by Koga in the isotropic \(J\) model only. The critical values for \(U\) are of the same order as other papers for the same model. A summarized comparison of our values compared to previous paper's results is shown in Table \ref{table_compare}.
+
+Our findings, along with analysis of the papers published in the course of this controversy, tend to show that the multi-band Mott transition is a surprisingly complex and rich problem. Two points of view are at odds, Liebsch's that in the anisotropic \(J_z\) model there is no OSMT, and that the wide band's quasiparticle weight does not go to zero because it transitions only to a bad metal state. This is supported by Koga, who believes isotropy is necessary for an OSMT. Opposing this view is Knecht, whose results tend to show there are indeed two different phase transitions.
 
 \begin{table}[h!]
 \centering
@@ -178,7 +144,7 @@ We considered a two-band Hubbard model with two different bandwidths \(W_1=2\)eV
  \hline
 Author & T (eV)  & $U_{c1}$ (eV) & $U_{c2}$ (eV) & $U_{c1}$ (eV) & $U_{c2}$ (eV) \\
  \hline
- Liebsch, 2004 & 1/32 & 2.5 & 2.5 & 1.9 & 3.1 \\
+ Liebsch, 2004 & 1/32 & 2.1 & 2.6 & 1.9 & 3.1 \\
  Koga et al., 2005 & 0 & 2.3 & 2.3 & 2.6 & 3.5 \\
  Knecht et al., 2005 & 1/40, 1/32 & 2.1 & 2.6 & & \\
  Arita, Held, 2005 & 0 & & & 2.6 & \\
