@@ -134,7 +134,7 @@ You can also see the improvement in the spectral function on figure \ref{fig:spe
 
 \section{Results}
 
-The quasiparticle weight is plotted on Fig. \ref{TODO}.
+The quasiparticle weight is plotted on Fig. \ref{fig:Z_full_J}.
 The graph unambiguously shows an OSMT, with the narrow band becoming insulating at $U_{c1} \approx 2.1$ and the wide band at $U_{c2} \approx 3.1$. These results are to be compared with that of Koga's paper \cite{Koga2004} and Arita's paper \cite{Arita2005}, which show respectively $U_{c1} \approx 2.6, U_{c2} \approx 3.5$ and $U_{c1} \approx 2.6$
 
 \begin{figure}[h!]
@@ -144,9 +144,9 @@ The graph unambiguously shows an OSMT, with the narrow band becoming insulating 
     \label{fig:Z_full_J}
 \end{figure}
 
-Overall, our results are lower than those cited above. This might be agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. \cite{Inaba2005} %Really ? Source ? Actually this might have nothing to do with temperature
+Overall, our results are lower than those cited above. This might be agreement with theory, predicting that the critical $U$ at which transition occurs goes down as temperature is increased. Inaba et al. studied the multi-orbital model at finite temperature to study the full phase diagram, setting $J=0$ or $J=0.1U$, showing that critical temperature can decrease by a few eVs at temperature of the order of $1/40$ eV. \cite{Inaba2005}
 
-Koga et al. argue that the isotropy in the full $J$ model is necessary to obtain an OSMT, explaining the absence of OSMT in Liebsch's results \cite{Koga2005}. In contrast, Knecht et al. \cite{Knecht2004} find lower values in the $J_z$ model, with $U_{c1} \approx 2.1$ and $U_{c2} \approx 2.6$, contradicting Liebsch's finding of the absence of OSMT \cite{Liebsch2004}. 
+Koga et al. argue that the isotropy in the full $J$ model is necessary to obtain an OSMT, explaining the absence of OSMT in Liebsch's results \cite{Koga2005}. In contrast, Knecht et al. \cite{Knecht2005} find lower values in the $J_z$ model, with $U_{c1} \approx 2.1$ and $U_{c2} \approx 2.6$, contradicting Liebsch's finding of the absence of OSMT \cite{Liebsch2004}. 
 
 Actually, though, Liebsch published an answer to Knecht, showing that they do in fact obtain the same results and that the difference is mainly in interpretation of the results \cite{Liebsch2005}. Liebsch argues that although the spectral weights at $\omega = 0$ go to zero at different values of U, a noticeable kink is present when observing the quasiparticle weight of the wide band. This behaviour is something we also observe suprisingly well in Fig. \ref{Z_full_J}.
 
@@ -154,11 +154,7 @@ Liebsch argues this kink shows that there is a single transition, but that the n
 
 To further ensure our results are correct, we plot the full spectral function for a small set of values of $U$ and assess whether they display the characteristic behaviour of Mott transitions.
 
-% Insert plot of spectral functions for 2 bands and at least two values of U
-
-% Compare those values with those of Arita et al. They plot spectral functions for U = 2.0, 2.2, 2.4, 2.6
-
-We further study the importance of the Hund coupling $J$ by running all the calculations again and setting $J = 0$ this time. The transition value is still not attained at $U = 5.5$, which is the maximum we could attain with our method before convergence issues.
+We further study the importance of the Hund coupling $J$ by running all the calculations again and setting $J = 0$ this time. The transition value is still not attained at $U = 5.5$, which is the maximum we could attain with our method before convergence issues (Fig. \ref{fig:Z_no_J}).
 The graph seems to be in agreement with Koga's results at $T = 0$ for the same model, where there is a single transition at $U_c = 7.3$, and $Z$ is at about $0.2$ for $U=5.5$.
 
 \begin{figure}[h!]
@@ -182,7 +178,7 @@ We considered a two-band Hubbard model with two different bandwidths \(W_1=2\)eV
  \hline
 Author & T (eV)  & $U_{c1}$ (eV) & $U_{c2}$ (eV) & $U_{c1}$ (eV) & $U_{c2}$ (eV) \\
  \hline
- Liebsch, 2004 & 1/32 & 2.5 & 2.5 & & \\
+ Liebsch, 2004 & 1/32 & 2.5 & 2.5 & 1.9 & 3.1 \\
  Koga et al., 2005 & 0 & 2.3 & 2.3 & 2.6 & 3.5 \\
  Knecht et al., 2005 & 1/40, 1/32 & 2.1 & 2.6 & & \\
  Arita, Held, 2005 & 0 & & & 2.6 & \\
@@ -197,7 +193,5 @@ Author & T (eV)  & $U_{c1}$ (eV) & $U_{c2}$ (eV) & $U_{c1}$ (eV) & $U_{c2}$ (eV)
 
 \bibliographystyle{unsrt}
 \bibliography{biblio}
-
-\end{document}
 
 \end{document}
