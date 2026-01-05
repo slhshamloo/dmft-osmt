@@ -54,11 +54,53 @@ Z_i = \ddfrac{1}{1 - \eval{\pdv{\omega} \real(\Sigma_i)}_{\omega = 0}}
 \end{equation}
 As the quasiparticle weight goes to zero, so does the spectral weight at $\omega = 0$, indicating an insulating state.
 For approximating the quasiparticle weight, we used a discrete approximation from the first Matsubara frequency. As the
+<<<<<<< HEAD
 first Matsubara frequency is given by $\omega_0 = \pi/\beta$, we have
+=======
+firts Matsubara frequency is given by $\omega_0 = \pi/\beta$, we have
+>>>>>>> 6a34015f3eacf8a5ac26126cf7fb94b945afda93
 \begin{equation}
 Z_i \approx \ddfrac{1}{1 - \frac{\Im (\Sigma_i (i \omega_0))}{\omega_0}} = \ddfrac{1}{1 - \frac{\beta}{\pi} \Im (\Sigma_i (i \omega_0))}.
 \end{equation}
 To get the spectral function from the calculation of the Green's function on the Matsubara (imaginary) axis, we used the maximum entropy method for analytic continuation.
+<<<<<<< HEAD
+=======
+
+The in-house DMFT + QMC code used for this project has two main parameters to ensure convergence: the number of DMFT iterations $n_{\text{DMFT}}$ and the time the QMC solver runs for each DMFT iteration, $t_{\text{QMC}}$.
+Other parameters worth mentioning are:
+\begin{itemize}
+\item The number of cores used for parallelisation, which is bound by the power of the computer used. We set this to 25 cores.
+\item \sloppy{The thermalization time in the QMC solver, which has to be around one fourth of the total QMC time to ensure the system is well equilibrated before measurements are taken.}
+\item The number of imaginary time slices in the QMC solver, which we set to 1024 slices to ensure a good resolution in imaginary time.
+\end{itemize}
+To choose appropriate values for $n_{\text{DMFT}}$ and $t_{\text{QMC}}$, we examined spectral function plots and monitored the change in quasiparticle weight as these parameters were increased.
+Playing around with these parameters, we found that increasing both parameters improved convergence at roughly the same rate. Our convergence showed that even very large values
+of $n_{\text{DMFT}}$ and $t_{\text{QMC}}$ improved the results (see figure \ref{fig:convergence}), so we set them to the maximum values our time constraints allowed: $t_{\text{QMC}} = 200\ \mathrm{s}$ and $n_{\text{DMFT}} = 200$.
+You can also see the improvement in the spectral function on figure \ref{fig:spectral_improvement}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/convergence}
+    \caption{Convergence of the quasiparticle weight as a function of DMFT iterations and QMC time. The number of DMFT iterations and the number of seconds for the QMC time are the same and are varied from 20 to 200.}
+    \label{fig:convergence}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/conv_low.pdf}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/conv_high}
+    \end{subfigure}
+    \caption{Spectral function for $U=2.5$ at low (left) and high (right) convergence parameters.}
+    \label{fig:spectral_improvement}
+\end{figure}
+
+>>>>>>> 6a34015f3eacf8a5ac26126cf7fb94b945afda93
 
 The in-house DMFT + QMC code used for this project has two main parameters to ensure convergence: the number of DMFT iterations $n_{\text{DMFT}}$ and the time the QMC solver runs for each DMFT iteration, $t_{\text{QMC}}$.
 Other parameters worth mentioning are:
